@@ -2,9 +2,16 @@
 	<head>
 		<title>Video</title>
 	</head>
-		
+	
 	<body>
 		<h1>Video</h1>
 		<video src="mov_bbb.mp4" loop autoplay controls>Your browser does not support HTML5 video.</video>
+		
+		<div id="content">
+		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+		<script>
+			document.getElementById('content').innerHTML =
+				marked.parse('# Marked in the browser\n\nRendered by **marked**.');
+		</script>
 	</body>
 </html>
