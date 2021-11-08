@@ -7,10 +7,8 @@
 		<h1>Video</h1>
 		<video src="mov_bbb.mp4" loop autoplay controls>Your browser does not support HTML5 video.</video>
 		
-
-
-		
 		<div id="content"></div>
+		<!--
 		$(function(){ 
 			$.ajax({ 
 				type:"get", 
@@ -21,12 +19,48 @@
 				} 
 			}) 
 		})
-		<!--
+		-->
+
 		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 		<script>
 			document.getElementById('content').innerHTML =
-				marked.parse('./');
+				marked.parse('> ```SQL\
+					      > #init\n\
+					      DROP TABLE IF EXISTS g9yaoluoran;\n\
+					      DROP TABLE IF EXISTS g9yaoluoran_atv;\n\
+					      DROP TABLE IF EXISTS g9yaoluoran_top10customer;\n\n\
+					      > #1\n\
+					      CREATE TABLE g9yaoluoran(\n\
+					        productCode varchar(15) NOT NULL PRIMARY KEY,\n\
+					        TS decimal(10, 2) NOT NULL\n\
+					      );\n\n\
+					      > INSERT INTO g9yaoluoran SELECT productCode, SUM(quantityOrdered*priceEach) as TS FROM orderdetails GROUP BY productCode ORDER BY SUM(quantityOrdered*priceEach) LIMIT 10;\n\n\
+					      > #2\n\
+					      CREATE TABLE g9yaoluoran_atv(\n\
+					        productCode varchar(15) NOT NULL PRIMARY KEY,\n\
+					        ATV decimal(10, 2) NOT NULL\n\
+					      );\n\n\
+					      > INSERT INTO g9yaoluoran_atv SELECT productCode, SUM(quantityOrdered*priceEach)/COUNT(DISTINCT orderNumber) as ATV FROM orderdetails GROUP BY productCode ORDER BY SUM(quantityOrdered*priceEach)/SUM(quantityOrdered) LIMIT 10;\n\n\
+					      > #3\n\
+					      CREATE TABLE g9yaoluoran_top10customer(\n\
+					        customerNumber int(11) NOT NULL PRIMARY KEY ,\n\
+					        customerName varchar(50) NOT NULL,\n\
+					        contactLastName varchar(50) NOT NULL,\n\
+					        contactFirstName varchar(50) NOT NULL,\n\
+					        phone varchar(50) NOT NULL,\n\
+					        addressLine1 varchar(50) NOT NULL,\n\
+					        addressLine2 varchar(50) NULL DEFAULT NULL,\n\
+					        city varchar(50) NOT NULL,\n\
+					        state varchar(50) NULL DEFAULT NULL,\n\
+					        postalCode varchar(15) NULL DEFAULT NULL,\n\
+					        country varchar(50) NOT NULL,\n\
+					        salesRepEmployeeNumber int(11) NULL DEFAULT NULL,\n\
+					        creditLimit decimal(10, 2) NULL DEFAULT NULL,\n\
+					        amount decimal(10, 2) NOT NULL\n\
+					      );\n\n\
+					      > INSERT INTO g9yaoluoran_top10customer SELECT customers.*, SUM(payments.amount) as amount FROM customers, payments WHERE customers.customerNumber=payments.customerNumber GROUP BY customerNumber ORDER BY SUM(payments.amount) DESC LIMIT 10;\n\
+					      > ```');
 		</script>
-		--!>
+		
 	</body>
 </html>
