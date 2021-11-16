@@ -3,7 +3,7 @@
 		<title></title>
       <script type="text/javascript">
         $(function() {
-          document.title = window.location.pathname;
+          document.title = window.location.href.split("?time=")[1]+"HW";
         }
      </script>
 	</head>
@@ -18,7 +18,7 @@
 
 		<script type="text/javascript">
 			$(function() {
-				$.get(window.location.pathname+".md", function(markdown) {                 
+				$.get(window.location.href.split("?time=")[1]+"HW.md", function(markdown) {                 
 					var testView = editormd.markdownToHTML("test-markdown-view", {
 					markdown        : markdown ,//+ "\r\n" + $("#append-test").text(),
 					});
