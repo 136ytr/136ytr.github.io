@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+	<head>
+		<title></title>
+      <script type="text/javascript">
+        $(function() {
+          document.title = window.location.pathname;
+        }
+     </script>
+	</head>
+	
+	<body>
+		<link rel="stylesheet" href="editormd/css/editormd.preview.css" />
+		<div id="test-markdown-view"></div>
+		<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+		<script src="editormd/editormd.js"></script>
+		<script src="editormd/lib/marked.min.js"></script>
+		<script src="editormd/lib/prettify.min.js"></script>
+
+		<script type="text/javascript">
+			$(function() {
+				$.get(window.location.pathname+".md", function(markdown) {                 
+					var testView = editormd.markdownToHTML("test-markdown-view", {
+					markdown        : markdown ,//+ "\r\n" + $("#append-test").text(),
+					});
+				});
+		});
+		</script> 
+		
+	</body>
+</html>
