@@ -36,6 +36,8 @@
 			for (let i = 0; i < elements.length; i++) {
 				$.get(window.location.href.split("?time=")[1]+"HW."+elements[i].getAttribute("id"),function () {
 					elements[i].style.display = "block";
+					elements[i].setAttribute("href",window.location.href.split("?time=")[1]+"HW."+elements[i].getAttribute("id"));
+					elements[i].setAttribute("download",window.location.href.split("?time=")[1]+"HW."+elements[i].getAttribute("id"));
 				})
 			}
 		</script> 
