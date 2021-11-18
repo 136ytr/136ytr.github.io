@@ -24,19 +24,19 @@
 		});
 		</script> 
 		
-		<a href=window.location.href.split("?time=")[1]+"HW.md" target="_blank" download=window.location.href.split("?time=")[1]+"HW.md">
+		<a class="download" style="display: block;" id="md">
 			<button>下载Markdown文件</button>
 		</a>
-		<a href=window.location.href.split("?time=")[1]+"HW.ipynb" target="_blank" download=window.location.href.split("?time=")[1]+"HW.ipynb">
-			<button style="display:none">下载ipynb文件</button>
+		<a class="download" style="display: none;" id="ipynb">
+			<button>下载ipynb文件</button>
 		</a>
 		
 		<script type="text/javascript">
-			var elements = document.querySelectorAll("button[style='display:none']")
-			for (var i = 0; i < elements.length; i++) {	
-				$.get(elements[i].parentNode.getAttribute("href"),function (data, status, jqxhr) {
+			var elements = document.getElementsByClassName("download")
+			for (let i = 0; i < elements.length; i++) {
+				$.get(window.location.href.split("?time=")[1]+"HW."+elements[i].getAttribute("id"),function () {
 					elements[i].style.display = "block";
-				}
+				})
 			}
 		</script> 
 		
