@@ -12,12 +12,10 @@
     
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
     
-    //调用获取数据方法
     getPost('https://www.apiopen.top/journalismApi',function(data){
         console.log(data);
     });
-
-    /**封装api获取数据方法--begin**/
+    
     function getPost(url,_callback){
         $.ajax({
             url : url,
@@ -35,5 +33,4 @@
             }
         })
     }
-    /**封装api获取数据方法--end**/
   <body>
