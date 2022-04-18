@@ -5,12 +5,27 @@
     <p id="updateId"></p>
     
     <script type="text/javascript">
-      function update(){
+      function update0(){
         document.getElementById('updateId').innerHTML = 'hello world！';
       }
     </script>
     
     <script type="text/javascript" src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+      function update(){
+        raw=$.ajax({
+              url : "https://raw.githubusercontent.com/aiboboxx/v2rayfree/main/v2",
+              type : "get",
+              dataType : "text/html",
+              data : {},
+          })
+
+        raw=raw['responseText']
+        
+        document.getElementById('updateId').innerHTML = raw;
+      }  
+    </script>
     
     <script type="text/javascript">
       getPost('https://www.apiopen.top/journalismApi',function(data){
