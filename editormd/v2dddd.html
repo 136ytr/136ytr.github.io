@@ -9,4 +9,31 @@
         document.getElementById('updateId').innerHTML = 'hello world！';
       }
     </script>
+    
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    
+    //调用获取数据方法
+    getPost('https://www.apiopen.top/journalismApi',function(data){
+        console.log(data);
+    });
+
+    /**封装api获取数据方法--begin**/
+    function getPost(url,_callback){
+        $.ajax({
+            url : url,
+            type : "post",
+            dataType : "json",
+            data : {},
+            success: function(data){
+                var data = data.data;
+                if(_callback){
+                    _callback(data);
+                }
+            },
+            error : function(){
+                alert("请求失败！");
+            }
+        })
+    }
+    /**封装api获取数据方法--end**/
   <body>
