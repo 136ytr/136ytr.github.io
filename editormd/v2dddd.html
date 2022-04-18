@@ -12,25 +12,29 @@
     
     <script type="text/javascript" src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
     
-    getPost('https://www.apiopen.top/journalismApi',function(data){
-        console.log(data);
-    });
+    <script type="text/javascript">
+      getPost('https://www.apiopen.top/journalismApi',function(data){
+          console.log(data);
+      });
+    </script>
     
-    function getPost(url,_callback){
-        $.ajax({
-            url : url,
-            type : "post",
-            dataType : "json",
-            data : {},
-            success: function(data){
-                var data = data.data;
-                if(_callback){
-                    _callback(data);
-                }
-            },
-            error : function(){
-                alert("请求失败！");
-            }
-        })
-    }
+    <script type="text/javascript">
+      function getPost(url,_callback){
+          $.ajax({
+              url : url,
+              type : "post",
+              dataType : "json",
+              data : {},
+              success: function(data){
+                  var data = data.data;
+                  if(_callback){
+                      _callback(data);
+                  }
+              },
+              error : function(){
+                  alert("请求失败！");
+              }
+          })
+      }
+    </script>
   <body>
