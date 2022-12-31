@@ -465,6 +465,16 @@ body {
     font-size: 14px;
 }
 
+#text {
+    opacity: 1;
+    padding: 20px 20px 20px 20px;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    z-index: 500;
+    color: #ffffff;
+    font-size: 14px;
+}
 
 
 
